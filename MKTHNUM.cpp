@@ -24,21 +24,21 @@ int b[N], a[N];
 
 int main() {
 	scanf("%d%d", &n, &m);
-	for (i = 1; i <= n; i++)	{
-    scanf("%d", &a[i]);
-    b[i] = a[i];
+	for (i = 1; i <= n; i++) {
+	    scanf("%d", &a[i]);
+	    b[i] = a[i];
 	}
 	sort(b+1,b+n+1);
 	for(int i=1;i<=n;i++) {
-    a[i] = lower_bound(b+1,b+n+1,a[i]) - b;
+    	    a[i] = lower_bound(b+1,b+n+1,a[i]) - b;
 	}
 	for(int i=1; i <= n; i++) {
-    x = a[i];
-    modify(root[i], root[i - 1], 1, 1000000001, x);
+		x = a[i];
+		modify(root[i], root[i - 1], 1, 1000000001, x);
 	}
 	while (m--) {
 		scanf("%d%d%d", &l, &r, &k);
-    int pos = query(root[l - 1], root[r], 1, 1000000001, k);
+    		int pos = query(root[l - 1], root[r], 1, 1000000001, k);
 		printf("%d\n", b[pos]);
 	}
 }
